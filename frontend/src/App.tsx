@@ -5,6 +5,7 @@ import CreateApplication from './pages/CreateApplication';
 import ApplicationDetail from './pages/ApplicationDetail';
 import EditApplication from './pages/EditApplication';
 import SearchPage from './pages/SearchPage';
+import CVEnhancePage from './pages/CVEnhancePage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="applications/:id/edit" element={<EditApplication />} />
           <Route path="applications/:id" element={<ApplicationDetail />} />
           <Route path="search" element={<SearchPage />} />
+          <Route path="cv-enhance" element={<CVEnhancePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

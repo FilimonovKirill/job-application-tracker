@@ -8,6 +8,7 @@ A modern web application for tracking job applications, interviews, and resumes.
 - **Manage Interview Stages**: Add and track different interview stages (HR screening, technical interview, fit interview, final interview)
 - **File Upload**: Upload resumes (PDF, DOCX) up to 3MB
 - **Advanced Search**: Full-text search across companies, roles, comments, and vacancy descriptions
+- **CV Enhance**: AI-powered resume evaluation and ATS optimization using DeepSeek Reasoner
 - **Responsive Design**: Mobile-friendly interface with Tailwind CSS
 - **Dockerized**: Easy deployment with Docker Compose
 - **Type Safety**: Full TypeScript support on both frontend and backend
@@ -98,6 +99,7 @@ NODE_ENV=development
 PORT=3001
 MONGO_URI=mongodb://localhost:27017/job_tracker
 FRONTEND_URL=http://localhost:3000
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 ```
 
 #### Docker Compose (.env)
@@ -106,6 +108,7 @@ NODE_ENV=development
 MONGO_USER=admin
 MONGO_PASSWORD=password
 FRONTEND_URL=http://localhost:3000
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 ```
 
 ## API Documentation
@@ -132,6 +135,10 @@ FRONTEND_URL=http://localhost:3000
 ### Health Check
 - GET `/health` - Service health status
 
+### CV Enhance
+- POST `/api/cv-enhance/evaluate` - Evaluate work experience against job description
+- POST `/api/cv-enhance/enhance` - Generate ATS-optimized work experience text
+
 ## Project Structure
 
 ```
@@ -139,16 +146,16 @@ job-tracker/
 ├── frontend/                 # React frontend
 │   ├── src/
 │   │   ├── components/      # React components
-│   │   ├── pages/          # Page components
+│   │   ├── pages/          # Page components (including CVEnhancePage)
 │   │   ├── services/       # API services
 │   │   └── utils/          # Utility functions
 │   ├── Dockerfile
 │   └── nginx.conf
 ├── backend/                 # Express backend
 │   ├── src/
-│   │   ├── controllers/    # Request handlers
+│   │   ├── controllers/    # Request handlers (including cvEnhanceController)
 │   │   ├── models/        # MongoDB models
-│   │   ├── routes/        # API routes
+│   │   ├── routes/        # API routes (including cvEnhanceRoutes)
 │   │   ├── middleware/    # Express middleware
 │   │   └── validators/    # Request validators
 │   ├── uploads/           # Uploaded files

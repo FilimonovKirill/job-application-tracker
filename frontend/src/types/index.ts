@@ -53,3 +53,12 @@ export interface CreateStageData {
   comments?: string;
   date: string;
 }
+
+export interface CVEnhanceEvaluation {
+  score: string;
+  analysis: string;
+}
+
+export interface CVEnhanceEnhancement {
+  enhancedText: string;
+}

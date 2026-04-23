@@ -106,4 +106,22 @@ export const stageApi = {
   },
 };
 
+export const cvEnhanceApi = {
+  evaluate: async (
+    experience: string,
+    jobDescription: string
+  ): Promise<ApiResponse<{ score: string; analysis: string }>> => {
+    const response = await api.post('/cv-enhance/evaluate', { experience, jobDescription });
+    return response.data;
+  },
+
+  enhance: async (
+    experience: string,
+    jobDescription: string
+  ): Promise<ApiResponse<{ enhancedText: string }>> => {
+    const response = await api.post('/cv-enhance/enhance', { experience, jobDescription });
+    return response.data;
+  },
+};
+
 export default api;

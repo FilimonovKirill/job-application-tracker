@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 
 import applicationRoutes from './routes/applicationRoutes';
 import stageRoutes from './routes/stageRoutes';
+import cvEnhanceRoutes from './routes/cvEnhanceRoutes';
 import { healthCheck } from './controllers/healthController';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 
@@ -48,6 +49,7 @@ app.get('/health', healthCheck);
 
 app.use('/api/applications', applicationRoutes);
 app.use('/api/stages', stageRoutes);
+app.use('/api/cv-enhance', cvEnhanceRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
